@@ -46,6 +46,11 @@ func (pk *MasterPublicKey) SetValue(publickey *bn256.G1) *MasterPublicKey {
 	return pk
 }
 
+func (sk *MasterPrivateKey) SetValue(secret *big.Int) *MasterPrivateKey{
+	sk.s = secret
+	return sk
+}
+
 func Setup(random io.Reader) (*MasterPublicKey, *MasterPrivateKey) {
 	secret, err := rand.Int(random, bn256.Order)
 	if err != nil {
