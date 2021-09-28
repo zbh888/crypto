@@ -40,7 +40,7 @@ type IdentityPrivateKey struct {
 	q *bn256.G2
 }
 
-// zbh888 edited, git version
+// zbh888 edited in use for frontrunning protection
 func (pk *MasterPublicKey) SetValue(publickey *bn256.G1) *MasterPublicKey {
 	pk.g1 = publickey
 	return pk
