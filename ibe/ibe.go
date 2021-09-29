@@ -51,6 +51,15 @@ func (sk *MasterPrivateKey) SetValue(secret *big.Int) *MasterPrivateKey{
 	return sk
 }
 
+func (identitykey *IdentityPrivateKey) ScalarMul(scalar *big.Int) *IdentityPrivateKey{
+	identitykey.d = new(bn256.G2).ScalarMult(identitykey.d, scalar)
+	return identitykey
+}
+
+func (identitykey *IdentityPrivateKey) Value() *bn256.G2 {
+	return identitykey.q
+}
+
 func Setup(random io.Reader) (*MasterPublicKey, *MasterPrivateKey) {
 	secret, err := rand.Int(random, bn256.Order)
 	if err != nil {
