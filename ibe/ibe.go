@@ -57,7 +57,7 @@ func (identitykey *IdentityPrivateKey) ScalarMul(scalar *big.Int) *IdentityPriva
 }
 
 func (identitykey *IdentityPrivateKey) Value() *bn256.G2 {
-	return identitykey.q
+	return identitykey.d
 }
 
 func Setup(random io.Reader) (*MasterPublicKey, *MasterPrivateKey) {
